@@ -20,7 +20,15 @@ public class TDD{
 			return new Dollar(amount);
 		}
 
-		abstract Money times(int multiplier);		
+		abstract Money times(int multiplier);
+		
+		static Money dollar(int amount)  {
+			return new Dollar(amount);
+		}
+
+		static Money franc(int amount) {
+			return new Franc(amount);
+		}				
 	}
 	
 	class Dollar extends Money{
@@ -50,16 +58,16 @@ public class TDD{
     }
 	
 	public void testEquality() {
-		assertTrue(new Dollar(5).equals(new Dollar(5)));
-		assertFalse(new Dollar(5).equals(new Dollar(6)));
-		assertTrue(new Franc(5).equals(new Franc(5)));
-		assertFalse(new Franc(5).equals(new Franc(6)));
-		assertFalse(new Franc(5).equals(new Dollar(5)));
+		assertTrue(Money.Dollar(5).equals(Money.Dollar(5)));
+		assertFalse(Money.Dollar(5).equals(Money.Dollar(6)));
+		assertTrue(Money.Franc(5).equals(Money.Franc(5)));
+		assertFalse(Money.Franc(5).equals(Money.Franc(6)));
+		assertFalse(Money.Franc(5).equals(Money.Dollar(5)));
 	}
 	
 	public void testFrancMultiplication() {
-		Franc five = new Franc(5);
-		assertEquals(new Franc(10), five.times(2));
-		assertEquals(new Franc(15), five.times(3));
+		Money five = Money.Franc(5);
+		assertEquals(Money.Franc(10), five.times(2));
+		assertEquals(Money.Franc(15), five.times(3));
 	}
 }
