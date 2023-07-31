@@ -28,28 +28,48 @@ public class TDD{
 
 		static Money franc(int amount) {
 			return new Franc(amount);
-		}				
+		}
+
+		abstract String currency();
 	}
 	
 	class Dollar extends Money{
-		private int amount;
+		private String currency;
+		
 		Dollar(int amount) {
 		  this.amount= amount;
+		  accurency = "CHF";
 		}
 		Money times(int multiplier) {
 			return new Dollar(amount * multiplier);
 		}
+		
+		String currency() {
+			return "USD";
+		}
     }
 	
 		class Franc extends Money{   
-		private int amount;					
+		private String currency;
+		
 			Franc(int amount) {      
-			this.amount= amount;
-		}					
+				this.amount= amount;
+				accurency = "CHF";
+			}					
 			Money times(int multiplier)  {      
 			return new Franc(amount * multiplier);					
-		}					
+		}
+
+		String currency() {
+			return "CHF";
+		}
 	}
+	
+	public void testCurrency() {
+		assertEquals("USD", Money.dollar(1).currency());
+		assertEquals("CHF", Money.franc(1).currency());
+	}
+
 
     public void testMultiplication() {
 		Money five = Money.Dollar(5);
