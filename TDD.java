@@ -23,7 +23,7 @@ public class TDD{
 		Dollar(int amount) {
 		  this.amount= amount;
 		}
-		void times(int multiplier) {
+		Money times(int multiplier) {
 			return new Dollar(amount * multiplier);
 		}
     }
@@ -33,15 +33,15 @@ public class TDD{
 			Franc(int amount) {      
 			this.amount= amount;
 		}					
-			Franc times(int multiplier)  {      
+			Money times(int multiplier)  {      
 			return new Franc(amount * multiplier);					
 		}					
 	}
 
     public void testMultiplication() {
-		Dollar five = new Dollar(5);
-		assertEquals(new Dollar(10), five.times(2));
-		assertEquals(new Dollar(15), five.times(3));
+		Money five = Money.Dollar(5);
+		assertEquals(Money.Dollar(10), five.times(2));
+		assertEquals(Money.Dollar(15), five.times(3));
     }
 	
 	public void testEquality() {
