@@ -30,7 +30,10 @@ public class TDD{
 			return new Franc(amount);
 		}
 
-		abstract String currency();
+		protected String currency();
+		String currency() {
+			return currency;
+		}
 	}
 	
 	class Dollar extends Money{
@@ -44,9 +47,6 @@ public class TDD{
 			return new Dollar(amount * multiplier);
 		}
 		
-		String currency() {
-			return currency;
-		}
     }
 	
 		class Franc extends Money{   
@@ -60,8 +60,6 @@ public class TDD{
 			return new Franc(amount * multiplier);					
 		}
 
-		String currency() {
-			return currency;
 		}
 	}
 	
