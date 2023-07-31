@@ -4,7 +4,16 @@ public class TDD{
 		testEquality();
 	}
 	
-	class Dollar {
+	class Money  {
+		protected int amount;
+
+		public boolean equals(Object object)  {
+			Money money = (Money) object;
+			return amount == money.amount;
+		}   
+	}
+	
+	class Dollar extends Money{
 		private int amount;
 		Dollar(int amount) {
 		  this.amount= amount;
@@ -14,20 +23,15 @@ public class TDD{
 		}
     }
 	
-		class Franc {   
+		class Franc extends Money{   
 		private int amount;					
 			Franc(int amount) {      
 			this.amount= amount;
 		}					
 			Franc times(int multiplier)  {      
 			return new Franc(amount * multiplier);					
-		}   
-		public boolean equals(Object object) {					
-			Franc franc = (Franc) object;      
-			return amount == franc.amount;					
 		}					
 	}
-
 
     public void testMultiplication() {
 		Dollar five = new Dollar(5);
@@ -38,11 +42,6 @@ public class TDD{
 	public void testEquality() {
 		assertTrue(new Dollar(5).equals(new Dollar(5)));
 		assertFalse(new Dollar(5).equals(new Dollar(6)));
-	}
-	
-	public boolean equals(Object object)  {
-		Dollar dollar = (Dollar) object;
-		return amount == dollar.amount;
 	}
 	
 	public void testFrancMultiplication() {
