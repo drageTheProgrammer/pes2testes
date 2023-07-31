@@ -38,14 +38,14 @@ public class TDD{
 		
 		Dollar(int amount) {
 		  this.amount= amount;
-		  accurency = "CHF";
+		  currency = "USD";
 		}
 		Money times(int multiplier) {
 			return new Dollar(amount * multiplier);
 		}
 		
 		String currency() {
-			return "USD";
+			return currency;
 		}
     }
 	
@@ -54,14 +54,14 @@ public class TDD{
 		
 			Franc(int amount) {      
 				this.amount= amount;
-				accurency = "CHF";
+				currency = "CHF";
 			}					
 			Money times(int multiplier)  {      
 			return new Franc(amount * multiplier);					
 		}
 
 		String currency() {
-			return "CHF";
+			return currency;
 		}
 	}
 	
