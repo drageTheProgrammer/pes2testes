@@ -44,7 +44,7 @@ public class TDD{
 		  currency = "USD";
 		}
 		Money times(int multiplier) {
-			return new Dollar(amount * multiplier);
+			return Money.Dollar(amount * multiplier);
 		}
 		
     }
@@ -57,8 +57,8 @@ public class TDD{
 				currency = "CHF";
 			}					
 			Money times(int multiplier)  {      
-			return new Franc(amount * multiplier);					
-		}
+				return Money.Franc(amount * multiplier);					
+			}
 
 		}
 	}
