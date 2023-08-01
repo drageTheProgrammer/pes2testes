@@ -1,7 +1,10 @@
 public class TDD{
 	public static void main(String[] args){
-		//testMultiplication();
+		testMultiplication();
 		testEquality();
+		testFrancMultiplication();
+		testCurrency();
+		testDifferentClassEquality();
 	}
 	
 	class Money  {
@@ -47,26 +50,21 @@ public class TDD{
 			this.amount = amount;
 			this.currency = currency;
 		}
+		
+		Money times(int multiplier) {
+			return new Money(amount * multiplier, currency);
+		}
 	}
 	
 	class Dollar extends Money{
 		Dollar(int amount, String currency) {
 		  super(amount, currency);
 		}
-		Money times(int multiplier) {
-			return Money.Dollar(amount * multiplier);
-		}
-		
-    }
+	}
 	
-		class Franc extends Money{   
-			Franc(int amount, String currency) {      
-				super(amount, currency);
-			}					
-			Money times(int multiplier)  {      
-				return Money.Franc(amount * multiplier);					
-			}
-
+	class Franc extends Money{   
+		Franc(int amount, String currency) {      
+			super(amount, currency);					
 		}
 	}
 	
@@ -94,5 +92,9 @@ public class TDD{
 		Money five = Money.Franc(5);
 		assertEquals(Money.Franc(10), five.times(2));
 		assertEquals(Money.Franc(15), five.times(3));
+	}
+	
+	public void testDifferentClassEquality() {
+		assertTrue(new Money(10, "CHF").equals(new Franc(10, "CHF")));
 	}
 }
