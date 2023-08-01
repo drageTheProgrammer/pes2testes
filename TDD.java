@@ -56,18 +56,6 @@ public class TDD{
 		}
 	}
 	
-	class Dollar extends Money{
-		Dollar(int amount, String currency) {
-		  super(amount, currency);
-		}
-	}
-	
-	class Franc extends Money{   
-		Franc(int amount, String currency) {      
-			super(amount, currency);					
-		}
-	}
-	
 	public void testCurrency() {
 		assertEquals("USD", Money.dollar(1).currency());
 		assertEquals("CHF", Money.franc(1).currency());
